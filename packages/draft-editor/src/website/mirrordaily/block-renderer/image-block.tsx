@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ContentBlock, ContentState } from 'draft-js'
+import { ThemeProvider } from '@mirrormedia/lilith-draft-renderer/node_modules/styled-components'
 
 import MirrorMedia from '@mirrormedia/lilith-draft-renderer/lib/website/mirrormedia'
+import mirrorMediaTheme from '@mirrormedia/lilith-draft-renderer/lib/website/mirrormedia/theme'
 import {
   ImageSelector,
   ImageEntityWithMeta,
@@ -97,7 +99,9 @@ export function ImageEditorBlock(props: ImageBlockProps) {
         />
       )}
       <ImageBlockWrapper>
-        <ImageBlock {...props} />
+        <ThemeProvider theme={mirrorMediaTheme}>
+          <ImageBlock {...props} />
+        </ThemeProvider>
       </ImageBlockWrapper>
       <ImageEditButton
         onClick={() => {
